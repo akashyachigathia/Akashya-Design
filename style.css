@@ -1,0 +1,576 @@
+@font-face {
+  font-family: Switzer-light;
+  src: url(/fonts/Switzer-Light.ttf);
+}
+
+@font-face {
+  font-family: Switzer_Regular;
+  src: url(/fonts/Switzer-Regular.ttf);
+}
+
+@font-face {
+  font-family: Switzer_semibold;
+  src: url(/fonts/Switzer-Semibold.ttf);
+}
+
+@font-face {
+  font-family: justmeagain;
+  src: url(/fonts/JustMeAgainDownHere.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+a {
+  text-decoration: none !important ;
+  color: black;
+}
+
+ul li {
+  list-style-type: none;
+  padding-left: 0 !important ;
+  padding-right: 0 !important ;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flow-root;
+}
+
+.line_left,
+.line_right {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: rgb(220, 220, 220);
+}
+
+.line_left {
+  left: 20%;
+}
+
+.line_right {
+  right: 20%;
+}
+
+.bottom_blur {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.08);
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 70%,
+    black 100%
+  );
+
+  pointer-events: none;
+  z-index: 900;
+}
+
+.navbar {
+  position: fixed;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem 0.45rem 0.9rem;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1.2rem;
+}
+
+.navbar a {
+  font-family: Switzer_semibold;
+  font-size: 0.9rem;
+  color: #222;
+  text-decoration: none;
+  white-space: nowrap;
+
+  padding: 0.7rem 1rem;
+  border-radius: 0.75rem;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.navbar a:hover {
+  background-color: rgba(185, 185, 185, 0.3);
+  color: #000;
+}
+
+.hero {
+  width: 60%;
+  min-width: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 250px 0 0 0;
+}
+
+.hero_heading .heading_line {
+  display: block;
+}
+
+.hero_heading .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero_heading .char {
+  display: inline-block;
+}
+
+.hero_heading .reveal_text {
+  display: block;
+}
+
+.title {
+  position: relative;
+}
+
+.title img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+
+  margin-bottom: 12px;
+}
+
+.title h1 {
+  font-family: Switzer_Regular;
+
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+}
+
+.title > span {
+  font-family: "Caveat";
+  color: rgb(121, 120, 120);
+  font-size: 1.3rem;
+  position: absolute;
+  right: -175px;
+  bottom: 18px;
+  transform: rotate(352deg);
+}
+
+.Playground {
+  width: min(55%, 1200px);
+  margin-inline: auto;
+  padding: 15rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.first_project {
+  width: 100%;
+}
+.project_img {
+  width: 100%;
+  min-height: 500px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 3rem 6rem;
+
+  background-color: #e5e5e5;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.project_img img {
+  display: block;
+  width: 90%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+.project_info {
+  margin-top: 1rem;
+}
+
+.project_info h2 {
+  font-family: Switzer_semibold;
+  font-size: 1.2rem;
+  margin: 0 0 0.2rem;
+}
+
+.project_info p {
+  font-family: Switzer_regular;
+  font-size: 1rem;
+  color: #777;
+  margin: 0;
+}
+
+.img_section {
+  width: 90%;
+  max-width: 1450px;
+  margin: 140px auto 50px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  position: relative;
+}
+
+.img_box {
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.img_box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+}
+
+.photo_card:nth-child(1) .photo_caption {
+  position: relative;
+  left: 155px;
+  margin-top: 0px;
+}
+
+.photo_card:nth-child(2) .photo_caption {
+  text-align: right;
+  position: relative;
+  right: 55px;
+  margin-top: 12px;
+}
+
+.photo_card:nth-child(3) .photo_caption {
+  text-align: right;
+  position: relative;
+  right: 55px;
+  margin-top: 6px;
+  font-size: 2.6rem;
+}
+.photo_card:nth-child(4) .photo_caption {
+  text-align: right;
+  position: relative;
+  right: 20px;
+  margin-top: 6px;
+}
+
+.photo_caption {
+  display: block;
+  font-family: "Caveat";
+  font-size: 2rem;
+  color: #505050;
+  font-weight: 100;
+  transform: rotate(-5deg);
+}
+
+.photo_card:nth-child(2),
+.photo_card:nth-child(4) {
+  margin-top: 45px;
+}
+
+.about {
+  width: 60%;
+  min-width: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0 0 0;
+}
+
+.aboutme p {
+  /* font-family: Switzer_semibold; */
+  font-family: Switzer_regular;
+  color: #272727;
+  padding: 0 100px;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+.contact {
+  width: 60%;
+  min-width: 100vh;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 80px 0 5rem 98px;
+}
+
+.contact p {
+  font-family: Switzer_semibold;
+  color: #272727;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+.btn_contact {
+  padding: 12px 18px;
+  background-color: #f4f4f4;
+  border: none;
+  color: #383838;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  font-family: Switzer_regular;
+  cursor: pointer;
+}
+
+.contact_icon {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.btn_contact:hover {
+  background-color: #e9e9e9;
+}
+
+.btn_contact i {
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+  color: #43454a;
+}
+
+#copyMessage {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+
+  padding: 12px 20px;
+  border-radius: 100px;
+
+  background-color: #111;
+  color: #fff;
+
+  font-family: Switzer_Regular, sans-serif;
+  font-size: 14px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.home_back img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.navbar .home_back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+
+
+
+#copyMessage.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* -------------------Playground page */
+
+.Project_images {
+  max-width: 1450px;
+  margin: 9rem auto;
+  padding: 0 1.5rem;
+}
+
+.Project_heading {
+  text-align: center;
+}
+
+.Project_heading p {
+  margin-top: 0.8rem;
+  font-family: Switzer_Regular;
+font-size: clamp(1rem, 2.4vw, 1rem);
+}
+
+.Project_heading h2{
+  font-family: Switzer_Regular;
+  font-size: clamp(2.2rem, 2.4vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+}
+
+.playground_gallery {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  padding-inline: 24px;
+
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.project_card {
+  break-inside: avoid;
+  margin: 0 0 15px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.project_card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.line_left,
+.line_right {
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+
+@media (max-width: 767px) {
+  .line_left,
+  .line_right {
+    display: none;
+  }
+
+  /* Keep the navbar fixed, aligned to the left */
+  .navbar {
+    left: 16px;
+    right: 16px;
+    transform: none;
+    width: fit-content;
+    max-width: calc(100% - 32px);
+
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.4rem;
+  }
+
+  .navbar a {
+    padding: 0.65rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  /* Left-aligned hero */
+  .hero {
+    width: 100%;
+    min-width: 0;
+    padding: 150px 20px 0;
+
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .title {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .title h1 {
+    font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+
+  .title span {
+    position: static;
+    display: block;
+    margin-top: 16px;
+    transform: none;
+    font-size: 1.2rem;
+  }
+
+  .Playground {
+    width: 100%;
+    padding: 5rem 20px;
+    gap: 3rem;
+  }
+
+  .project_img {
+    min-height: 0;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .project_img img {
+    width: 100%;
+    height: auto;
+  }
+
+  .project_info {
+    text-align: left;
+  }
+}
+
+@media (max-width: 1024px) {
+  .playground_gallery {
+    column-count: 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .playground_gallery {
+    column-count: 1;
+    padding-inline: 16px;
+  }
+}
