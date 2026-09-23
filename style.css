@@ -1,21 +1,21 @@
 @font-face {
   font-family: Switzer-light;
-  src: url(/fonts/Switzer-Light.ttf);
+  src: url(./fonts/Switzer-Light.ttf);
 }
 
 @font-face {
   font-family: Switzer_Regular;
-  src: url(/fonts/Switzer-Regular.ttf);
+  src: url(./fonts/Switzer-Regular.ttf);
 }
 
 @font-face {
   font-family: Switzer_semibold;
-  src: url(/fonts/Switzer-Semibold.ttf);
+  src: url(./fonts/Switzer-Semibold.ttf);
 }
 
 @font-face {
   font-family: justmeagain;
-  src: url(/fonts/JustMeAgainDownHere.ttf);
+  src: url(./fonts/JustMeAgainDownHere.ttf);
 }
 
 * {
