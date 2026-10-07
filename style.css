@@ -259,6 +259,7 @@ main {
   gap: 20px;
   align-items: start;
   position: relative;
+  z-index: 1;
 }
 
 .img_box {
