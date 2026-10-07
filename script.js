@@ -1,3 +1,18 @@
+
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const lenis = new Lenis({
+      autoRaf: true,
+      smoothWheel: true,
+      lerp: 0.1,
+      anchors: true,
+    });
+  }
+
+
+
+
+
 function heroTextAnimation(){
   const heading = document.querySelector(".hero_heading");
 const heroCaption = document.querySelector(".hero_caption");
