@@ -1,6 +1,6 @@
 
 
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (typeof Lenis !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const lenis = new Lenis({
       autoRaf: true,
       smoothWheel: true,
@@ -106,6 +106,7 @@ function emailCopyFeature (){
 var email = document.getElementById('Email');
 var copyMessage = document.getElementById('copyMessage');
 var hideMessage;
+if (!email || !copyMessage) return;
 
 email.addEventListener('click', async function (event) {
   event.preventDefault();
@@ -135,6 +136,7 @@ console.log('HELLO')
 
 function avatarMovement() {
 const avatar = document.querySelector("#interactiveAvatar");
+if (!avatar) return;
 
 const avatarImages = {
   "top-left": "avatar-directions/avatar-top-left.webp",
@@ -196,3 +198,61 @@ document.addEventListener("mouseleave", function () {
 heroTextAnimation();
 avatarMovement();
 emailCopyFeature();
+
+// Load the live website only when the visitor chooses to explore it.
+function setupProjectPreview() {
+  const card = document.querySelector("#project1");
+  if (!card) return;
+  const box = card.querySelector("[data-project-preview]");
+  const viewport = card.querySelector(".preview_viewport");
+  const poster = card.querySelector(".preview_poster");
+  const toggle = card.querySelector(".preview_toggle");
+  const status = card.querySelector(".preview_status");
+  const desktop = window.matchMedia("(min-width: 768px)");
+  let frame = null;
+
+  function sizePreview() {
+    if (!frame || !viewport.clientWidth) return;
+    const scale = viewport.clientWidth / 1440;
+    frame.style.height = `${viewport.clientHeight / scale}px`;
+    frame.style.transform = `scale(${scale})`;
+  }
+
+  function closePreview() {
+    if (frame) frame.remove();
+    frame = null;
+    viewport.hidden = true;
+    poster.hidden = false;
+    box.classList.remove("is-active");
+    toggle.textContent = "Explore preview";
+    toggle.setAttribute("aria-expanded", "false");
+    status.textContent = "";
+  }
+
+  toggle.hidden = !desktop.matches;
+  toggle.addEventListener("click", () => {
+    if (frame) { closePreview(); return; }
+    if (!desktop.matches) return;
+    frame = document.createElement("iframe");
+    frame.title = "World Fashion Exchange interactive website preview";
+    frame.src = "https://akashyachigathia.github.io/wfx-website-redesign/";
+    viewport.hidden = false;
+    poster.hidden = true;
+    box.classList.add("is-active");
+    viewport.appendChild(frame);
+    sizePreview();
+    toggle.textContent = "Close preview";
+    toggle.setAttribute("aria-expanded", "true");
+    status.textContent = "Scroll inside the preview to explore. Close it to return to page scrolling. If it does not load, use Open website.";
+  });
+  desktop.addEventListener("change", () => {
+    if (!desktop.matches) closePreview();
+    toggle.hidden = !desktop.matches;
+  });
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(sizePreview).observe(viewport);
+  } else {
+    window.addEventListener("resize", sizePreview);
+  }
+}
+setupProjectPreview();
