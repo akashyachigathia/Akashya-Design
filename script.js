@@ -224,6 +224,7 @@ function setupProjectPreview() {
     viewport.hidden = true;
     poster.hidden = false;
     box.classList.remove("is-active");
+    box.removeAttribute("data-lenis-prevent");
     toggle.textContent = "Explore preview";
     toggle.setAttribute("aria-expanded", "false");
     status.textContent = "";
@@ -239,6 +240,7 @@ function setupProjectPreview() {
     viewport.hidden = false;
     poster.hidden = true;
     box.classList.add("is-active");
+    box.setAttribute("data-lenis-prevent", "");
     viewport.appendChild(frame);
     sizePreview();
     toggle.textContent = "Close preview";

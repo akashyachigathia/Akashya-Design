@@ -859,3 +859,8 @@ font-size: clamp(1rem, 2.4vw, 1rem);
 }
 
 .project_preview.is-active .preview_viewport { border-radius: inherit; }
+
+/* Keep the embedded website interactive during smooth scrolling */
+.project_preview.is-active .preview_viewport iframe {
+  pointer-events: auto !important;
+}
